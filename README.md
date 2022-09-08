@@ -4,13 +4,18 @@
 
 * Installer un des serveurs locaux suivants : Wamp / Xampp / Lamp / Mamp 
 > Contient un serveur Apache + MySQL/MariaDB + PHP
-* Installer le gestionnaire de dépendances Composer https://getcomposer.org/download/
+* Installer **Git** https://git-scm.com/
+* Installer **NodeJS** https://nodejs.org/en/
+* Installer le gestionnaire de dépendances **Composer** https://getcomposer.org/download/
 > Privilégier le téléchargement du fichier d'installation plutôt que les lignes de commande
 >
 > ![alt text](./docs/imgs/composer.png "Title")
   
-* Installer Symfony CLI https://symfony.com/download
+* Installer **Symfony CLI** https://symfony.com/download
+
 > Privilégier le téléchargement des binaires
+>
+> L'installation via Bower est également très pratique : https://bower.io/
 >
 > ![alt text](./docs/imgs/symfony-console.png "Title")
 >
@@ -30,5 +35,18 @@
 
 ## Installation
 
-* Cloner le repository
-* Ouvrir une invit de commandes
+* Ouvrir une invit de commandes dans le dossier de votre serveur local
+
+> Pour Wamp : C:\wamp\www
+> 
+> Pour Xampp : C:\xamp\htdocs
+
+* Créer un projet vide : `symfony new my_project_directory --version="6.1.*" --webapp`
+
+* Si vous n'avez pas réussi à installer la commande `symfony`, utilisez composer :
+* `composer create-project symfony/skeleton:"6.1.*" my_project_directory`
+* `cd my_project_directory`
+* `composer require webapp`
+
+## Lancer le serveur local
+* `symfony serve`
