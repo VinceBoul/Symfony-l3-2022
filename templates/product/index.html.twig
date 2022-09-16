@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Product index{% endblock %}
+
+{% block body %}
+    <h1>Product index</h1>
+
+
+        {% for product in products %}
+            <a href="{{ path('app_product_show', {'id': product.id}) }}">show</a>
+            {{ include('product/product_partial.html.twig', {'prod' : product}) }}
+{#                    <a href="{{ path('app_product_edit', {'id': product.id}) }}">edit</a>#}
+
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+
+
+    <a href="{{ path('app_product_new') }}">Create new</a>
+{% endblock %}

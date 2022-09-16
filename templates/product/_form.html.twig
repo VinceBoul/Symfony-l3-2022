@@ -1,0 +1,11 @@
+{{ form_start(form) }}
+    <i>{{ form_label(form.name) }}</i>
+    {{ form_widget(form.name) }}
+    <br>
+    {{ form_row(form.description) }}
+
+    <h3>Quantité du produit</h3>
+    {{ form_widget(form.quantity) }}
+
+    <button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}
