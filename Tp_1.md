@@ -14,8 +14,14 @@ Chaque véhicule comprend les propriétés suivantes :
 ## Éxercice 1
 
 * Créer l'entité correspondant à un véhicule, avec les contraintes de champs nécessaires.
-
+> Générer/modifier une entité : `symfony console make:entity`
+> 
+> Générer un fichier de migration :  `symfony console make:migrations`
+> 
+> Exécuter le fichier de migration : `symfony console doctrine:migrations:migrate`
+ 
 * Générer un Crud de cette entité, et créer plusieurs véhicules
+> symfony console make:crud
 
 **Résultat attendu : Pouvoir lister/ajouter/éditer/supprimer un véhicule**
 
