@@ -39,14 +39,13 @@
 
 > Pour Wamp : C:\wamp\www
 > 
-> Pour Xampp : C:\xamp\htdocs
+> Pour Xampp : C:\xampp\htdocs
 
 * Créer un projet vide : `symfony new my_project_directory --version="6.1.*" --webapp`
 
 * Si vous n'avez pas réussi à installer la commande `symfony`, utilisez composer :
 * `composer create-project symfony/skeleton:"6.1.*" my_project_directory`
 * `cd my_project_directory`
-* `composer require webapp`
 
 ## Lancer le serveur local
 * `symfony serve`
