@@ -16,7 +16,7 @@ Chaque véhicule comprend les propriétés suivantes :
 * Créer l'entité correspondant à un véhicule, avec les contraintes de champs nécessaires.
 > Générer/modifier une entité : `symfony console make:entity`
 > 
-> Générer un fichier de migration :  `symfony console make:migrations`
+> Générer un fichier de migration :  `symfony console make:migration`
 > 
 > Exécuter le fichier de migration : `symfony console doctrine:migrations:migrate`
  
