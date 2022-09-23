@@ -31,6 +31,9 @@
                 <td>{{ vehicule.price }}</td>
                 <td>{{ vehicule.quantity }}</td>
                 <td>
+                    <a href="{{ path('app_vehicule_update_quantity', {'id': vehicule.id, 'update' : 'plus'}) }}">Quantité +1</a>
+                    <a href="{{ path('app_vehicule_update_quantity', {'id': vehicule.id, 'update' : 'moins'}) }}">Quantité -1</a>
+
                     <a href="{{ path('app_vehicule_show', {'id': vehicule.id}) }}">show</a>
                     <a href="{{ path('app_vehicule_edit', {'id': vehicule.id}) }}">edit</a>
                 </td>
