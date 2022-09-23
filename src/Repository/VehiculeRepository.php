@@ -39,20 +39,42 @@ class VehiculeRepository extends ServiceEntityRepository
         }
     }
 
-//    /**
-//     * @return Vehicule[] Returns an array of Vehicule objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('v')
-//            ->andWhere('v.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('v.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    /**
+     * @return Vehicule[] Returns an array of Vehicule objects
+     */
+    public function findAllWithFilters($filters): array
+    {
+        $qb = $this->createQueryBuilder('v');
+        if (array_key_exists('kMin', $filters)
+          && $filters['kMin'] !== ''){
+          $qb->andWhere('v.kilometrage >= :valMin')
+            ->setParameter('valMin', $filters['kMin']);
+        }
+
+      if (array_key_exists('kMax', $filters)
+        && $filters['kMax'] !== ''){
+        $qb->andWhere('v.kilometrage <= :valMax')
+          ->setParameter('valMax', $filters['kMax']);
+      }
+
+      if (array_key_exists('order-price', $filters)
+        && $filters['order-price'] !== ''){
+        $qb->orderBy('v.price', $filters['order-price']);
+      }
+
+      return $qb->getQuery()->getResult();
+    }
+
+
+
+    /*
+     *           $qb->andWhere('v.kilometrage >= :kmin')
+            ->setParameter('kmin', $filters['kMin']);
+          if (array_key_exists('kMax', $filters) && $filters['kMax'] !== ''){
+        $qb->andWhere('v.kilometrage <= :kmax')
+          ->setParameter('kmax', $filters['kMax']);
+      }
+    */
 
 //    public function findOneBySomeField($value): ?Vehicule
 //    {

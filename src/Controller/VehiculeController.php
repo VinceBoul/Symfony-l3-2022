@@ -10,14 +10,18 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/vehicule')]
+#[Route('/vehicules')]
 class VehiculeController extends AbstractController
 {
     #[Route('/', name: 'app_vehicule_index', methods: ['GET'])]
-    public function index(VehiculeRepository $vehiculeRepository): Response
+    public function index(Request $request, VehiculeRepository $vehiculeRepository): Response
     {
-        return $this->render('vehicule/index.html.twig', [
-            'vehicules' => $vehiculeRepository->findAll(),
+        return $this->render(
+          'vehicule/index.html.twig', [
+            'vehicules' =>
+              $vehiculeRepository
+                ->findAllWithFilters($request->query->all()),
+            // $request->query->all() contient les paramètres GET
         ]);
     }
 

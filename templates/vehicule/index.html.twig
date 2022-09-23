@@ -5,6 +5,16 @@
 {% block body %}
     <h1>Vehicule index</h1>
 
+    <form>
+        <input name="kMin" type="text" placeholder="Kilométrage minimum"/>
+        <input name="kMax" type="text" placeholder="Kilométrage maximum"/>
+        <select name="order-price">
+            <option value="ASC">Croissant</option>
+            <option value="DESC">Décroissant</option>
+        </select>
+        <input type="submit" value="Valider">
+    </form>
+
     <table class="table">
         <thead>
             <tr>
