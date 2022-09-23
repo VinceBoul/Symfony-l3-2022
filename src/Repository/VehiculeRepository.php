@@ -16,65 +16,54 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class VehiculeRepository extends ServiceEntityRepository
 {
-    public function __construct(ManagerRegistry $registry)
-    {
-        parent::__construct($registry, Vehicule::class);
+  public function __construct(ManagerRegistry $registry)
+  {
+    parent::__construct($registry, Vehicule::class);
+  }
+
+  public function add(Vehicule $entity, bool $flush = false): void
+  {
+    $this->getEntityManager()->persist($entity);
+
+    if ($flush) {
+      $this->getEntityManager()->flush();
+    }
+  }
+
+  public function remove(Vehicule $entity, bool $flush = false): void
+  {
+    $this->getEntityManager()->remove($entity);
+
+    if ($flush) {
+      $this->getEntityManager()->flush();
+    }
+  }
+
+  /**
+   * @return Vehicule[] Returns an array of Vehicule objects
+   */
+  public function findAllWithFilters($filters): array
+  {
+    $qb = $this->createQueryBuilder('v');
+
+    if (array_key_exists('kMin', $filters)
+      && $filters['kMin'] !== ''){
+      $qb->andWhere('v.kilometrage >= :valMin')
+        ->setParameter('valMin', $filters['kMin']);
+    }
+    if (array_key_exists('kMax', $filters)
+      && $filters['kMax'] !== ''){
+      $qb->andWhere('v.kilometrage <= :valMax')
+        ->setParameter('valMax', $filters['kMax']);
     }
 
-    public function add(Vehicule $entity, bool $flush = false): void
-    {
-        $this->getEntityManager()->persist($entity);
-
-        if ($flush) {
-            $this->getEntityManager()->flush();
-        }
+    if (array_key_exists('order-price', $filters)
+      && $filters['order-price'] !== ''){
+      $qb->orderBy('v.price', $filters['order-price']);
     }
 
-    public function remove(Vehicule $entity, bool $flush = false): void
-    {
-        $this->getEntityManager()->remove($entity);
-
-        if ($flush) {
-            $this->getEntityManager()->flush();
-        }
-    }
-
-    /**
-     * @return Vehicule[] Returns an array of Vehicule objects
-     */
-    public function findAllWithFilters($filters): array
-    {
-        $qb = $this->createQueryBuilder('v');
-        if (array_key_exists('kMin', $filters)
-          && $filters['kMin'] !== ''){
-          $qb->andWhere('v.kilometrage >= :valMin')
-            ->setParameter('valMin', $filters['kMin']);
-        }
-
-      if (array_key_exists('kMax', $filters)
-        && $filters['kMax'] !== ''){
-        $qb->andWhere('v.kilometrage <= :valMax')
-          ->setParameter('valMax', $filters['kMax']);
-      }
-
-      if (array_key_exists('order-price', $filters)
-        && $filters['order-price'] !== ''){
-        $qb->orderBy('v.price', $filters['order-price']);
-      }
-
-      return $qb->getQuery()->getResult();
-    }
-
-
-
-    /*
-     *           $qb->andWhere('v.kilometrage >= :kmin')
-            ->setParameter('kmin', $filters['kMin']);
-          if (array_key_exists('kMax', $filters) && $filters['kMax'] !== ''){
-        $qb->andWhere('v.kilometrage <= :kmax')
-          ->setParameter('kmax', $filters['kMax']);
-      }
-    */
+    return $qb->getQuery()->getResult();
+  }
 
 //    public function findOneBySomeField($value): ?Vehicule
 //    {
