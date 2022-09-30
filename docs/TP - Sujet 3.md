@@ -47,7 +47,7 @@ Créer l'entité suivante, avec les propriétés indiquées :
     * Titre (chaîne de caractères)
 	* Prix (integer) - champ non obligatoire
 	* Publié (Booléen)
-	* Catégorie (Liste déroulante avec les choix : "Divers", "Sport", "Société")
+	* Catégorie (Liste déroulante avec les choix : "Immobilier", "Bricolage", "Divers")
 
 * Dans le **formulaire** : Modifier le label du champ "Titre" par "Titre de l'annonce"
 * Dans la **liste** : 
