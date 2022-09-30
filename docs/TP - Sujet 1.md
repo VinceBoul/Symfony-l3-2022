@@ -49,8 +49,9 @@ Créer l'entité suivante, avec les propriétés indiquées :
 	* marque (chaîne de caractères)
 	* nutriscore (Liste déroulante avec les choix : "A", "B", "C", "D", "E")
 
-* Modifier le label du champ "nom" par "Nom du produit"
-* Ajouter un lien pour augmenter le prix de 5€
-* Mettre en place un filtre "prix minimum" de la liste sur la propriété prix
+* Dans le **formulaire** : Modifier le label du champ "nom" par "Nom du produit"
+* Dans la **liste** : 
+  * Ajouter un lien pour augmenter le prix de 5€
+  * Mettre en place un filtre "prix minimum" de la liste sur la propriété prix
 
-* Bonus : Mettre en place une contrainte (Assert) sur la propriété "prix" pour que le prix ne puisse pas être inférieur à 200
+* Mettre en place une contrainte (Assert) sur la propriété "prix" pour que le prix ne puisse pas être inférieur à 200
