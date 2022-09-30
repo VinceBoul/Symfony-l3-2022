@@ -39,32 +39,18 @@ Créer un dossier `NOM_PRENOM` et copier les éléments suivants de votre projet
 
 Zipper le dossier et l'envoyer à l'adresse mail `vtoullec@gmail.com`
 
-
+* Si exceptionnellement vous avez changé de groupe, indiquez le moi dans le mail votre groupe d'origine et celui dans lequel vous étiez.  
 
 #### Sujet 1
 Créer l'entité suivante, avec les propriétés indiquées :
 * Produit alimentaire (Product)
     * nom (chaîne de caractères)
-	* prix (float)
+	* prix (float) - champ non obligatoire
 	* marque (chaîne de caractères)
 	* nutriscore (Liste déroulante avec les choix : "A", "B", "C", "D", "E")
 
-Mettre en place un filtre "prix minimum" de la liste sur la propriété prix
+* Modifier le label du champ "nom" par "Nom du produit"
+* Ajouter un lien pour augmenter le prix de 5€
+* Mettre en place un filtre "prix minimum" de la liste sur la propriété prix
 
-#### Sujet 2
-* Voitures (Car)
-	* nom du modèle (chaîne de caractères)
-	* prix (flottant)
-	* marque (chaîne de caractères)
-	* Kilométrage (entier)
-
- Mettre en place un trie par ordre croissant/décroissant sur la propriété Kilométrage
-
-#### Sujet 3
-* Fusées (Rocket)
-	* Nom du modèle (chaîne de caractères)
-	* Hauteur (flottant)
-	* Fabricant (chaîne de caractères)
-	* Pays fabriquant (Liste déroulante avec les choix : "France", "USA", "Russie", "Chine")
-
-Mettre en place un filtre "hauteur maximum" de la liste sur la propriété "hauteur" 
+* Bonus : Mettre en place une contrainte (Assert) sur la propriété "prix" pour que le prix ne puisse pas être inférieur à 200
