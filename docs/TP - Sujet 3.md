@@ -41,7 +41,7 @@ Zipper le dossier et l'envoyer à l'adresse mail `vtoullec@gmail.com`
 
 * Si exceptionnellement vous avez changé de groupe, indiquez le moi dans le mail votre groupe d'origine et celui dans lequel vous étiez.  
 
-#### Sujet 2
+#### Sujet 3
 Créer l'entité suivante, avec les propriétés indiquées :
 * Annonce
     * Titre (chaîne de caractères)
