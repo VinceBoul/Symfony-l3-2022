@@ -80,6 +80,15 @@ class VehiculeController extends AbstractController
         return $this->redirectToRoute('app_vehicule_index', [], Response::HTTP_SEE_OTHER);
     }
 
+  #[Route('/toto/{id}', name: 'app_vehicule_toto', methods: ['POST'])]
+  public function toto(Request $request, Vehicule $vehicule, VehiculeRepository $vehiculeRepository): Response
+  {
+    if ($this->isCsrfTokenValid('delete'.$vehicule->getId(), $request->request->get('_token'))) {
+      $vehiculeRepository->remove($vehicule, true);
+    }
+    return $this->redirectToRoute('app_vehicule_index', [], Response::HTTP_SEE_OTHER);
+  }
+
     #[Route('/update-quantity/{id}/{update}', name: 'app_vehicule_update_quantity', methods: ['GET'])]
     public function updateQuantity(Vehicule $vehicule, $update, VehiculeRepository $vehiculeRepository): Response
     {
