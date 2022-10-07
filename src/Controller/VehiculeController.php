@@ -45,7 +45,7 @@ class VehiculeController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_vehicule_show', methods: ['GET'])]
-    public function show(Vehicule $vehicule): Response
+    public function showVehicule(Vehicule $vehicule): Response
     {
         return $this->render('vehicule/show.html.twig', [
             'vehicule' => $vehicule,
@@ -70,8 +70,8 @@ class VehiculeController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_vehicule_delete', methods: ['POST'])]
-    public function delete(Request $request, Vehicule $vehicule, VehiculeRepository $vehiculeRepository): Response
+    #[Route('/dumby/{id}', name: 'app_vehicule_dumby', methods: ['POST'])]
+    public function dumby(Request $request, Vehicule $vehicule, VehiculeRepository $vehiculeRepository): Response
     {
         if ($this->isCsrfTokenValid('delete'.$vehicule->getId(), $request->request->get('_token'))) {
             $vehiculeRepository->remove($vehicule, true);
@@ -81,7 +81,7 @@ class VehiculeController extends AbstractController
     }
 
     #[Route('/update-quantity/{id}/{update}', name: 'app_vehicule_update_quantity', methods: ['GET'])]
-    public function updateQuantity(Vehicule $vehicule, $update, VehiculeRepository $vehiculeRepository): Response
+    public function updateVehiculeQuantity(Vehicule $vehicule, $update, VehiculeRepository $vehiculeRepository): Response
     {
     if ($update === 'plus'){
       $vehicule->setQuantity($vehicule->getQuantity() + 1);
