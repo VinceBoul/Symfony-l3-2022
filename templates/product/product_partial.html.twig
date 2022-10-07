@@ -2,6 +2,7 @@
 <br>
 <i>{{ prod.description|raw }}</i>
 <br>
+<img src="{{ asset('uploads/brochures/'~ product.image) }}"/>
 <strong><i>{{ prod.quantity }}</i></strong>
 <br>
 <a href="{{ path('app_product_update_quantity',{ 'id' : prod.id, 'update' : 'plus' }) }}" class="btn">Quantité +1</a>
