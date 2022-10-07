@@ -89,9 +89,9 @@ class VehiculeController extends AbstractController
       $vehicule->setQuantity($vehicule->getQuantity() - 1);
     }
 
+    $vehiculeRepository->add($vehicule, true);
 
     return $this->redirectToRoute('app_vehicule_index');
   }
 
-  // Toto
 }
