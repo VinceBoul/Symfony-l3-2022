@@ -76,7 +76,7 @@ class VehiculeController extends AbstractController
         if ($this->isCsrfTokenValid('delete'.$vehicule->getId(), $request->request->get('_token'))) {
             $vehiculeRepository->remove($vehicule, true);
         }
-        // bla bla des commentaires
+// TOTO 1
         return $this->redirectToRoute('app_vehicule_index', [], Response::HTTP_SEE_OTHER);
     }
 
@@ -88,10 +88,10 @@ class VehiculeController extends AbstractController
     }else{
       $vehicule->setQuantity($vehicule->getQuantity() - 1);
     }
-
+// TOTO 2
+    $vehiculeRepository->add($vehicule, true);
 
     return $this->redirectToRoute('app_vehicule_index');
   }
 
-  // Toto
 }
