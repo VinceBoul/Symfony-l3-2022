@@ -3,7 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Entity\UserProfileImage;
+use App\Form\UserProfileImageType;
 use App\Form\UserType;
+use App\Repository\UserProfileImageRepository;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -40,11 +43,25 @@ class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_user_show', methods: ['GET'])]
-    public function show(User $user): Response
+    #[Route('/profile/{id}', name: 'app_user_show', methods: ['GET', 'POST'])]
+    public function show(Request $request, UserProfileImageRepository $imageRepository, UserRepository $userRepository, User $user): Response
     {
+      $userImage = new UserProfileImage();
+      $form = $this->createForm(UserProfileImageType::class, $userImage);
+      $form->handleRequest($request);
+
+      if ($form->isSubmitted() && $form->isValid()) {
+
+        $user->setUserProfileImage($userImage);
+        $userRepository->add($user, true);
+        $imageRepository->add($userImage, true);
+
+        return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
+      }
+
         return $this->render('user/show.html.twig', [
-            'user' => $user,
+          'user' => $user,
+          'form' => $form->createView(),
         ]);
     }
 
