@@ -14,6 +14,17 @@
         {% endblock %}
     </head>
     <body>
+    <a href="{{ path('app_article_index') }}">Liste des articles</a>
+<br>
+    {% for category in global_variables.getCategories %}
+        <a href="{{ path('app_category_show', {'id': category.id}) }}">{{ category.name }}</a>
+        <br>
+    {% else %}
+        <tr>
+            <td colspan="3">Aucune catégorie</td>
+        </tr>
+    {% endfor %}
+
     <h1>Header</h1>
         {% block body %}{% endblock %}
 
